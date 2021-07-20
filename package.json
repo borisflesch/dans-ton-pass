@@ -1,0 +1,24 @@
+{
+  "name": "dans-ton-pass",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "base45": "^3.0.0",
+    "cbor": "^7.0.6",
+    "cbor-js": "^0.1.0",
+    "cbor-web": "^7.0.6",
+    "core-js": "^3.15.1",
+    "html5-qrcode": "^2.0.11",
+    "nuxt": "^2.15.7",
+    "pako": "^2.0.3",
+    "vue-qrcode-reader": "^3.0.3",
+    "vue-spinner": "^1.0.4"
+  },
+  "devDependencies": {}
+}
