@@ -38,7 +38,7 @@
                       <div class="block-title">
                         <h3>Le <span>code source</span> est-il disponible ?</h3>
                       </div>
-                      <p>Absolument ! DansTonPass est un projet entièrement Open Source qui n'en est d'ailleurs qu'à ses balbutiements. Toute remarque, suggestion ou contribution est la bienvenue ;-)</p>
+                      <p>Absolument ! DansTonPass est un projet entièrement Open Source qui n'en est d'ailleurs qu'à ses balbutiements. Toute remarque, suggestion ou contribution est la bienvenue ;-) (<a href="https://github.com/borisflesch/dans-ton-pass" target="_blank">GitHub</a>)</p>
                     </div>
                     <div class="col-sm-6 col-md-6">
                       <div class="block-title">

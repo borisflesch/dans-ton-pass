@@ -5,7 +5,7 @@ RUN mkdir -p /usr/src/nuxt-app
 WORKDIR /usr/src/nuxt-app
 
 # update and install dependency
-RUN apt-get update && apt-get upgrade -y
+RUN apk update && apk upgrade
 
 # copy the app, note .dockerignore
 COPY . /usr/src/nuxt-app/
