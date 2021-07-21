@@ -7,12 +7,6 @@
 
 (function($) {
 "use strict";
-    // Subpages resize
-    function subpages_resize() {
-        var subpagesHeight = $('.pt-page-current').height();
-        $(".subpages").height(subpagesHeight + 50);
-    }
-
     // Hide Mobile menu
     function mobileMenuHide() {
         var windowWidth = $(window).width();
@@ -26,10 +20,6 @@
     $(window)
         .on('resize', function() { //Resize
              mobileMenuHide();
-
-             setTimeout(function(){
-                subpages_resize();
-            }, 500);
         })
         .scroll(function () {
             if ($(window).scrollTop() < 20) {
