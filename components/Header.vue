@@ -4,7 +4,10 @@
     <header id="site_header" class="header mobile-menu-hide">
       <div class="header-content">
         <div class="site-title-block mobile-hidden">
-          <div class="site-title">DansTon<span>Pass</span></div>
+          <div class="site-title">
+            <img class="logo" src="/logo.png" alt="Logo">
+            DansTon<span>Pass</span>
+          </div>
         </div>
 
         <!-- Navigation -->
@@ -31,7 +34,10 @@
     <!-- Mobile Header -->
     <div class="mobile-header mobile-visible">
       <div class="mobile-logo-container">
-        <NuxtLink class="mobile-site-title" to="/">DansTonPass</NuxtLink>
+        <NuxtLink class="mobile-site-title" to="/">
+          <img class="logo" src="/logo.png" alt="Logo">
+          DansTonPass
+        </NuxtLink>
       </div>
 
       <a class="menu-toggle mobile-visible">
@@ -41,3 +47,10 @@
     <!-- /Mobile Header -->
   </div>
 </template>
+
+<style scoped>
+.logo {
+  vertical-align: middle;
+  width: 34px;
+}
+</style>
