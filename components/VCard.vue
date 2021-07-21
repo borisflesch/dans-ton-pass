@@ -517,6 +517,10 @@ export default {
 </script>
 
 <style scoped>
+.info-list span {
+  word-break: break-all;
+}
+
 .pt-page {
   height: auto;
   position: relative;
