@@ -33,7 +33,7 @@
                 <div class="col-sm-8 col-md-8 col-lg-8">
                   <div v-if="certificate" class="title-block">
                     <h1>
-                      {{ certificate.forename }} {{ certificate.surname }}
+                      {{ certificate.forename.capitalize() }} {{ certificate.surname.capitalize() }}
                     </h1>
                     <div class="owl-carousel text-rotation">
                       <div class="item">
@@ -73,7 +73,7 @@
                       <h3>Votre certificat <span>« EU Digital Covid Certificate »</span></h3>
                     </div>
                     <p>
-                      Ce certificat appartient à <strong>{{ certificate.forename }}</strong> <strong>{{ certificate.surname }}, </strong>né(e) le <strong>{{ formatDate(certificate.dateOfBirth) }}</strong>.<br>
+                      Ce certificat appartient à <strong>{{ certificate.forename.capitalize() }}</strong> <strong>{{ certificate.surname.capitalize() }}, </strong>né(e) le <strong>{{ formatDate(certificate.dateOfBirth) }}</strong>.<br>
                       Votre certificat est composé des sections (certificats) détaillées ci-dessous :
                     </p>
                   </div>

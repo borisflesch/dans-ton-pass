@@ -1,3 +1,5 @@
+import { createSEOMeta } from "./utils/seo";
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -11,8 +13,14 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
-      { hid: 'description', name: 'description', content: 'Explorez votre Certificat Covid Digital et découvrez toutes les informations qu\'il contient sur vous et vos certificats dans les moindres détails (test, guérison, vaccination).' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+
+      ...createSEOMeta({
+        title: "DansTonPass - L'Explorateur de Pass Sanitaire Covid",
+        description: 'Explorez votre Certificat Covid Digital et découvrez toutes les informations qu\'il contient sur vous et vos certificats dans les moindres détails (test, guérison, vaccination).',
+        image: process.env.HOST_NAME + '/demo.jpg',
+        url: process.env.HOST_NAME,
+      })
     ],
     script: [
       { src: "/js/jquery-2.1.3.min.js", mode: 'client' },
@@ -37,6 +45,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/stringMethods.js' },
     { src: '~/plugins/qrCodeReader.js', mode: 'client' }
   ],
 
@@ -49,9 +58,14 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/sitemap'
   ],
+  sitemap: {
+    hostname: process.env.HOST_NAME,
+    routes: [] // all the dynamic routes
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
 }
