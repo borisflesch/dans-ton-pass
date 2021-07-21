@@ -25,7 +25,7 @@
                         </div>
                       </qrcode-stream>
                       <p class="text-center mt-3">— OU —</p>
-                      <qrcode-capture class="m-auto" @decode="onDecode"/>
+                      <qrcode-capture class="m-auto" @decode="onDecode" @detect="onDetect"/>
                     </client-only>
                   </div>
                 </div>
@@ -333,14 +333,11 @@
         </section>
       </div>
     </div>
+    <notifications :duration="5000" position="bottom right" />
   </div>
 </template>
 
 <script>
-// if (process.browser) {
-//     require('~/node_modules/html5-qrcode/dist/html5-qrcode.min.js');
-//     console.log("OKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOKOK")
-// }
 import BeatLoader from "vue-spinner/src/BeatLoader.vue";
 import QRCodeDecoder from "~/class/QRCodeDecoder.js";
 
@@ -472,7 +469,11 @@ export default {
      */
     onDecode(decodedString) {
       if (!decodedString.startsWith("HC1")) {
-        alert("QR Code invalide");
+        this.$notify({
+          type: 'error',
+          title: 'QR Code invalide',
+          text: 'Avez-vous bien scanné un Certificat Covid Digital Européen ?'
+        });
         return;
       }
 
@@ -486,10 +487,32 @@ export default {
         }
         this.camera = "off";
         this.showRefreshQrCode = true;
-
         this.certificate = certificate;
       } catch(err) {
-        console.error(err);
+        this.$notify({
+          type: 'error',
+          title: 'Échec du décodage',
+          text: 'Le décodage des informations de votre QR Code a échoué pour une raison inconnue. Avez-vous bien scanné un Certificat Covid Digital Européen ?'
+        });
+      }
+    },
+    async onDetect (promise) {
+      try {
+        const {
+          imageData,    // raw image data of image/frame
+          content,      // decoded String or null
+          location      // QR code coordinates or null
+        } = await promise;
+
+        if (content === null) {
+          this.$notify({
+            type: 'error',
+            title: 'QR Code non détecté',
+            text: 'Veuillez réessayer avec une image de meilleure qualité et/ou avec un meilleur éclairage'
+          });
+        }
+      } catch (error) {
+        console.error(error);
       }
     },
     /**
@@ -542,5 +565,9 @@ export default {
   color: #fff;
   font-size: 1.2em;
   text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+}
+
+.vue-notification {
+  margin: 10px;
 }
 </style>

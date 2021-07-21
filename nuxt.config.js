@@ -46,7 +46,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/stringMethods.js' },
-    { src: '~/plugins/qrCodeReader.js', mode: 'client' }
+    { src: '~/plugins/qrCodeReader.js', mode: 'client' },
+    { src: '~/plugins/vueNotification.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
