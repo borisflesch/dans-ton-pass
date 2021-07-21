@@ -33,7 +33,7 @@
                 <div class="col-sm-8 col-md-8 col-lg-8">
                   <div v-if="certificate" class="title-block">
                     <h1>
-                      {{ certificate.forename.capitalize() }} {{ certificate.surname.capitalize() }}
+                      {{ certificate.forename }} {{ certificate.surname }}
                     </h1>
                     <div class="owl-carousel text-rotation">
                       <div class="item">
@@ -73,7 +73,7 @@
                       <h3>Votre certificat <span>« EU Digital Covid Certificate »</span></h3>
                     </div>
                     <p>
-                      Ce certificat appartient à <strong>{{ certificate.forename.capitalize() }}</strong> <strong>{{ certificate.surname.capitalize() }}, </strong>né(e) le <strong>{{ formatDate(certificate.dateOfBirth) }}</strong>.<br>
+                      Ce certificat appartient à <strong>{{ certificate.forename }}</strong> <strong>{{ certificate.surname }}, </strong>né(e) le <strong>{{ formatDate(certificate.dateOfBirth) }}</strong>.<br>
                       Votre certificat est composé des sections (certificats) détaillées ci-dessous :
                     </p>
                   </div>
@@ -477,9 +477,17 @@ export default {
       }
 
       try {
-        this.certificate = new QRCodeDecoder(decodedString);
+        const certificate = new QRCodeDecoder(decodedString);
+        if (certificate.forename) {
+          certificate.forename = certificate.forename.capitalize();
+        }
+        if (certificate.surname) {
+          certificate.surname = certificate.surname.capitalize();
+        }
         this.camera = "off";
         this.showRefreshQrCode = true;
+
+        this.certificate = certificate;
       } catch(err) {
         console.error(err);
       }
