@@ -59,7 +59,7 @@
                         </div>
                       </div>
                     </div>
-                    <p style="color: #fff; margin-top: 12px;">Scannez le QR Code de votre « Pass Sanitaire » ou « Certificat Covid Digital (EU) » afin d'afficher le détail des informations qu'il contient. Aucune donnée n'est conservée ou transférée.</p>
+                    <p style="color: #fff; margin-top: 12px;">Scannez le QR Code de votre 🇪🇺 Certificat Covid Digital (Pass Sanitaire) afin d'afficher le détail des informations qu'il contient (ne fonctionne pas avec l'ancien 2D-DOC).<br>Aucune donnée n'est conservée ou transférée.</p>
                   </div>
                 </div>
               </div>
