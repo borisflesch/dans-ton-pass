@@ -20,7 +20,7 @@ export default {
       { src: "/js/main.js", mode: 'client' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
     ]
   },
 

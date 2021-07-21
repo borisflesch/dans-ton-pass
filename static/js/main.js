@@ -34,17 +34,17 @@
     // On Document Load
     $(document).on('ready', function() {
         // Mobile menu
-        $('.menu-toggle').on("click", function () {
+        $('body').on("click", '.menu-toggle', function () {
             $('#site_header').toggleClass('mobile-menu-hide');
         });
 
         // Mobile menu hide on main menu item click
-        $('.site-main-menu').on("click", "a", function (e) {
+        $('body').on("click", '.site-main-menu', "a", function (e) {
             mobileMenuHide();
         });
 
         // Sidebar toggle
-        $('.sidebar-toggle').on("click", function () {
+        $('body').on("click", '.sidebar-toggle', function () {
             $('#blog-sidebar').toggleClass('open');
         });
     });
