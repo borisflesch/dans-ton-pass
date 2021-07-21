@@ -130,7 +130,8 @@
 export default {
   head() {
     return {
-        title: 'A propos - DansTonPass'
+        title: 'A propos - DansTonPass',
+        url: 'a-propos'
     }
   },
 };

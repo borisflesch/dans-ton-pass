@@ -19,7 +19,7 @@ export default {
         title: "DansTonPass - L'Explorateur de Pass Sanitaire Covid",
         description: 'Explorez votre Certificat Covid Digital et découvrez toutes les informations qu\'il contient sur vous et vos certificats dans les moindres détails (test, guérison, vaccination).',
         image: process.env.HOST_NAME + '/demo.jpg',
-        url: process.env.HOST_NAME,
+        url: '',
       })
     ],
     script: [
