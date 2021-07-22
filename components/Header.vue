@@ -16,7 +16,12 @@
           <ul id="nav" class="site-main-menu">
             <li>
               <NuxtLink class="pt-trigger" to="/" data-animation="62">Accueil</NuxtLink
-              ><!-- href value = data-id without # of .pt-page. -->
+              >
+            </li>
+            <li>
+              <NuxtLink class="pt-trigger" to="/comment-ca-marche" data-animation="62"
+                >Comment ça marche ?</NuxtLink
+              >
             </li>
             <li>
               <NuxtLink class="pt-trigger" to="/a-propos" data-animation="62"
