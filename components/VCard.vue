@@ -444,6 +444,7 @@ export default {
       try {
         await promise;
       } catch (error) {
+        this.$matomo.trackEvent("QR Code", "Camera error", error.name);
         if (error.name === "NotAllowedError") {
           alert(
             "Pour scanner votre QR Code, veuillez autoriser l'application à utiliser votre caméra !"
@@ -469,6 +470,7 @@ export default {
      */
     onDecode(decodedString) {
       if (!decodedString.startsWith("HC1")) {
+        this.$matomo.trackEvent("QR Code", "Invalid");
         this.$notify({
           type: 'error',
           title: 'QR Code invalide',
@@ -489,6 +491,7 @@ export default {
         this.showRefreshQrCode = true;
         this.certificate = certificate;
       } catch(err) {
+        this.$matomo.trackEvent("QR Code", "Decoding error");
         this.$notify({
           type: 'error',
           title: 'Échec du décodage',
@@ -498,6 +501,8 @@ export default {
     },
     async onDetect (promise) {
       try {
+        this.$matomo.trackEvent("QR Code", "Detected");
+        
         const {
           imageData,    // raw image data of image/frame
           content,      // decoded String or null

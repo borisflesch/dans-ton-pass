@@ -60,7 +60,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/sitemap',
-    ['nuxt-matomo', { matomoUrl: '//matomo.danstonpass.fr/', siteId: 1 }],
+    ['nuxt-matomo', { matomoUrl: '//matomo.danstonpass.fr/', siteId: 1, debug: false }],
   ],
   sitemap: {
     hostname: process.env.HOST_NAME,
