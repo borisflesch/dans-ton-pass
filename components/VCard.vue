@@ -598,13 +598,6 @@
                       <a @click.prevent="resetResult()" href="#" class="btn btn-primary"
                         >Scanner mon QR Code</a
                       >
-                      OU
-                      <a
-                        @click="showExample()"
-                        href="#"
-                        class="btn btn-secondary"
-                        >Voir un exemple</a
-                      >
                     </div>
                   </div>
                 </div>
