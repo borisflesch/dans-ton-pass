@@ -26,6 +26,7 @@ export default {
       { src: "/js/jquery-2.1.3.min.js", mode: 'client' },
       { src: "/js/bootstrap.min.js", mode: 'client' },
       { src: "/js/main.js", mode: 'client' },
+      { src: "https://unpkg.com/@peculiar/x509", mode: 'client' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }

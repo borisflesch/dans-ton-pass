@@ -4,10 +4,12 @@
     <header id="site_header" class="header mobile-menu-hide">
       <div class="header-content">
         <div class="site-title-block mobile-hidden">
-          <div class="site-title">
-            <img class="logo" src="/logo.png" alt="Logo">
-            DansTon<span>Pass</span>
-          </div>
+          <NuxtLink to="/">
+            <div class="site-title">
+              <img class="logo" src="/logo.png" alt="Logo">
+              DansTon<span>Pass</span>
+            </div>
+          </NuxtLink>
         </div>
 
         <!-- Navigation -->
@@ -57,5 +59,9 @@
 .logo {
   vertical-align: middle;
   width: 34px;
+}
+
+.site-title-block a:focus, .site-title-block a:hover {
+  text-decoration: none;
 }
 </style>
