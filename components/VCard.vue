@@ -480,6 +480,7 @@ export default {
       }
 
       try {
+        this.$matomo.trackEvent("QR Code", "Detected");
         const certificate = new QRCodeDecoder(decodedString);
         if (certificate.forename) {
           certificate.forename = certificate.forename.capitalize();
@@ -500,9 +501,7 @@ export default {
       }
     },
     async onDetect (promise) {
-      try {
-        this.$matomo.trackEvent("QR Code", "Detected");
-        
+      try {        
         const {
           imageData,    // raw image data of image/frame
           content,      // decoded String or null
@@ -510,6 +509,7 @@ export default {
         } = await promise;
 
         if (content === null) {
+          this.$matomo.trackEvent("QR Code", "Not Detected");
           this.$notify({
             type: 'error',
             title: 'QR Code non détecté',
