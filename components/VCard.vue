@@ -595,7 +595,7 @@
                   </p>
                   <div class="block">
                     <div class="center download-resume">
-                      <a @click.prevent="resetResult()" href="#" class="btn btn-primary"
+                      <a @click.prevent="scrollTop()" href="#" class="btn btn-primary"
                         >Scanner mon QR Code</a
                       >
                     </div>
@@ -806,15 +806,18 @@ export default {
      */
     resetResult() {
       this.certificate = null;
+      this.cameraLoading = true;
+      this.showRefreshQrCode = false;
       this.camera = "off";
-      setTimeout(() => {
-        this.cameraLoading = true;
-        this.camera = "auto";
-        this.showRefreshQrCode = false;
-        if (process.browser) {
-          window.scrollTo(0,0);
-        }
-      }, 500);
+      this.camera = "auto";
+    },
+    /**
+     * Scroll to page top
+     */
+    scrollTop() {
+      if (process.browser) {
+        window.scrollTo(0,0);
+      }
     },
     /**
      * Display a QR Code scan example
