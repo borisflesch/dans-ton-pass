@@ -595,7 +595,7 @@
                   </p>
                   <div class="block">
                     <div class="center download-resume">
-                      <a href="#" class="btn btn-primary"
+                      <a @click.prevent="resetResult()" href="#" class="btn btn-primary"
                         >Scanner mon QR Code</a
                       >
                       OU
@@ -786,17 +786,6 @@ export default {
       }
     },
     /**
-     * Display a QR Code scan example
-     */
-    showExample() {
-      if (this.$matomo) this.$matomo.trackEvent("Button", "Show example");
-      this.certificate = new QRCodeDecoder(
-        "HC1:NCF570.90T9WTWGVLKG99.+VKV9NT3RH1X*4%AB3XK4F36:G$MB2F3F*K+UR3JCYHAY50.FK6ZK7:EDOLFVCPD0B$D% D3IA4W5646946%96X476KCN9E%961A69L6QW6B46XJCCWENF6OF63W5Y96B46WJCT3E2+8WJC0FD4:473DSDDF+ANG7ZHAFM89A6A1A71B/M8RY971BS1BAC9$+ADB8ZCAM%6//6.JCP9EJY8L/5M/5546.96D46%JCIQE1C93KC.SC4KCD3DX47B46IL6646I*6..DX%DLPCG/DZ-CFZA71A1T8W.CZ-C4%E-3E4VCI3D7WEMY95IAWY8I3DD CGECQED$PC5$CUZCY$5Y$5JPCT3E5JDLA7KF6D463W5WA6%78%VIKQS*9OE.U37WGJG.1J5PF9WOASFU3UI69PKJEH2F:SY2SCYKFOMVGP OLGW31.J5OVSAFBGON19H+HCSIA7P:65P0F-QR/GS:2"
-      );
-      this.camera = "off";
-      this.showRefreshQrCode = true;
-    },
-    /**
      * When something is detected by QR Code reader (used in file input)
      */
     async onDetect(promise) {
@@ -825,9 +814,28 @@ export default {
     resetResult() {
       this.certificate = null;
       this.camera = "off";
-      this.cameraLoading = true;
-      this.camera = "auto";
-      this.showRefreshQrCode = false;
+      setTimeout(() => {
+        this.cameraLoading = true;
+        this.camera = "auto";
+        this.showRefreshQrCode = false;
+        if (process.browser) {
+          window.scrollTo(0,0);
+        }
+      }, 500);
+    },
+    /**
+     * Display a QR Code scan example
+     */
+    showExample() {
+      if (this.$matomo) this.$matomo.trackEvent("Button", "Show example");
+      this.camera = "off";
+      this.showRefreshQrCode = true;
+      this.certificate = new QRCodeDecoder(
+        "HC1:NCF570.90T9WTWGVLKG99.+VKV9NT3RH1X*4%AB3XK4F36:G$MB2F3F*K+UR3JCYHAY50.FK6ZK7:EDOLFVCPD0B$D% D3IA4W5646946%96X476KCN9E%961A69L6QW6B46XJCCWENF6OF63W5Y96B46WJCT3E2+8WJC0FD4:473DSDDF+ANG7ZHAFM89A6A1A71B/M8RY971BS1BAC9$+ADB8ZCAM%6//6.JCP9EJY8L/5M/5546.96D46%JCIQE1C93KC.SC4KCD3DX47B46IL6646I*6..DX%DLPCG/DZ-CFZA71A1T8W.CZ-C4%E-3E4VCI3D7WEMY95IAWY8I3DD CGECQED$PC5$CUZCY$5Y$5JPCT3E5JDLA7KF6D463W5WA6%78%VIKQS*9OE.U37WGJG.1J5PF9WOASFU3UI69PKJEH2F:SY2SCYKFOMVGP OLGW31.J5OVSAFBGON19H+HCSIA7P:65P0F-QR/GS:2"
+      );
+      if (process.browser) {
+        window.scrollTo(0,0);
+      }
     },
     /**
      * Paint QR Code bouding box in real time on the reader canvas
