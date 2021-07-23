@@ -2368,12 +2368,11 @@ blockquote footer, blockquote small, blockquote .small {
   }
 
   .site-main {
-    position: absolute;
-    top: 50px;
-    bottom: 0;
+    /* position: absolute; */
     width: 100%;
     height: auto;
     margin: 0;
+    padding-top: 50px;
     border: 0;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
