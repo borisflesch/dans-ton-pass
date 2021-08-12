@@ -34,6 +34,8 @@
                         @decode="onDecode"
                         @detect="onDetect"
                       />
+                      <button class="btn btn-primary" id="fake-upload-btn" @click="onUploadBtnClick">Uploader un fichier</button>
+                      <span id="fake-file-chosen">{{fileName}}</span>
                     </client-only>
                   </div>
                 </div>
@@ -701,6 +703,7 @@ export default {
       showRefreshQrCode: false, // Retake picture toggle
       camera: "auto", // 'rear', 'front'
       certificate: null,
+      fileName: 'Aucun fichier sélectionné',
     };
   },
   methods: {
@@ -782,6 +785,11 @@ export default {
      * When something is detected by QR Code reader (used in file input)
      */
     async onDetect(promise) {
+      // Change filename to display it
+      let value = document.querySelector('input[name="image"]').value;
+      value = value.split('\\');
+      this.fileName = value[value.length-1];
+      
       try {
         const {
           imageData, // raw image data of image/frame
@@ -846,6 +854,13 @@ export default {
         ctx.strokeRect(x, y, width, height);
       }
     },
+    /**
+     * When the fake input button is clicked, trigger real input to select a file
+     */
+    onUploadBtnClick() {
+      const inputFile = document.querySelector('input[name="image"]');
+      inputFile.click();
+    }
   },
 };
 </script>
@@ -886,5 +901,22 @@ export default {
   max-width: 100px;
   height: 88px;
   margin: 16px 0;
+}
+
+/* Mask real file input */
+input[name="image"] {
+  display: none;
+}
+
+.photo {
+  text-align: center;
+}
+
+#fake-upload-btn {
+  margin-bottom: 8px;
+}
+
+#fake-file-chosen {
+  display: block;
 }
 </style>
